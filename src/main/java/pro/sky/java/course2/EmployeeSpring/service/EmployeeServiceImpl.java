@@ -1,7 +1,7 @@
 package pro.sky.java.course2.EmployeeSpring.service;
 
 import org.springframework.stereotype.Service;
-import pro.sky.java.course2.EmployeeSpring.dte.Employee;
+import pro.sky.java.course2.EmployeeSpring.dto.Employee;
 import pro.sky.java.course2.EmployeeSpring.exception.EmployeeAlreadyAddedException;
 import pro.sky.java.course2.EmployeeSpring.exception.EmployeeNotFoundException;
 import pro.sky.java.course2.EmployeeSpring.exception.EmployeeStorageIsFullException;
@@ -19,11 +19,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee addEmployee(String name, String lastName) {
+    public Employee addEmployee(String name, String lastName, double salary, int department) {
         if (employeeMap.keySet().size() == EMPLOYEES_MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Превышен лимит количества сотрудников в фирме");
         }
-        Employee employee = new Employee(name, lastName);
+        Employee employee = new Employee(name, lastName, salary, department);
         String keyEmployee = name + lastName;
 
         if (employeeMap.containsKey(keyEmployee)) {

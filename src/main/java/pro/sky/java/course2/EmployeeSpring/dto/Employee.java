@@ -1,16 +1,19 @@
-package pro.sky.java.course2.EmployeeSpring.dte;
+package pro.sky.java.course2.EmployeeSpring.dto;
 
 import java.util.Objects;
 
 public class Employee {
     private final String lastName;
     private final String name;
+    private final double salary;
+    private final int department;
 
-    public Employee(String name, String lastName) {
+
+    public Employee(String name, String lastName, double salary, int department) {
         this.name = name;
         this.lastName = lastName;
-
-
+        this.salary = salary;
+        this.department = department;
     }
 
     public String getName() {
@@ -19,6 +22,14 @@ public class Employee {
 
     public String getLastname() {
         return lastName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public int getDepartment() {
+        return department;
     }
 
     @Override

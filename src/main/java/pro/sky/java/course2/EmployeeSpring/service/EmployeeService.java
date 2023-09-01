@@ -1,12 +1,10 @@
 package pro.sky.java.course2.EmployeeSpring.service;
-import pro.sky.java.course2.EmployeeSpring.dte.Employee;
+import pro.sky.java.course2.EmployeeSpring.dto.Employee;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 public interface EmployeeService {
-    Employee addEmployee(String name, String lastname);
+    Employee addEmployee(String name, String lastName, double salary, int department);
 
     Employee removeEmployees(String name, String lastname);
 
