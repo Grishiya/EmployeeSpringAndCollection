@@ -1,5 +1,6 @@
 package pro.sky.java.course2.EmployeeSpring.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.EmployeeSpring.dto.Employee;
 import pro.sky.java.course2.EmployeeSpring.exception.EmployeeAlreadyAddedException;
@@ -11,7 +12,7 @@ import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private Map<String, Employee> employeeMap;
+    private final Map<String, Employee> employeeMap;
     private static final int EMPLOYEES_MAX_SIZE = 10;
 
     public EmployeeServiceImpl() {
@@ -23,8 +24,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeMap.keySet().size() == EMPLOYEES_MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Превышен лимит количества сотрудников в фирме");
         }
-        Employee employee = new Employee(name, lastName, salary, department);
-        String keyEmployee = name + lastName;
+        Employee employee = new Employee(StringUtils.capitalize(name),
+                StringUtils.capitalize(lastName),
+                salary, department);
+        String keyEmployee = generateKey(name,lastName);
 
         if (employeeMap.containsKey(keyEmployee)) {
             throw new EmployeeAlreadyAddedException("Добавляемый сотрудник уже имеется в списке");
@@ -56,5 +59,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Collection<Employee> findAllEmployee() {
         return employeeMap.values();
+    }
+
+    private String generateKey(String name, String lastName) {
+        return name + lastName;
     }
 }

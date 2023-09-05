@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.EmployeeSpring.dto.Employee;
 import pro.sky.java.course2.EmployeeSpring.service.EmployeeService;
+import pro.sky.java.course2.EmployeeSpring.util.EmployeeNameValidator;
 
 import java.util.Collection;
 
@@ -22,16 +23,19 @@ public class EmployeeController {
     @GetMapping("/add")
     public Employee add(@RequestParam String name, @RequestParam String lastName,
                         @RequestParam double salary, @RequestParam int department) {
+        EmployeeNameValidator.checkName(name, lastName);
         return employeeService.addEmployee(name, lastName, salary, department);
     }
 
     @GetMapping("/remove")
     public Employee remove(@RequestParam String name, @RequestParam String lastName) {
+        EmployeeNameValidator.checkName(name, lastName);
         return employeeService.removeEmployees(name, lastName);
     }
 
     @GetMapping("/find")
     public Employee find(@RequestParam String name, @RequestParam String lastName) {
+        EmployeeNameValidator.checkName(name, lastName);
         return employeeService.findEmployee(name, lastName);
     }
 
@@ -40,5 +44,7 @@ public class EmployeeController {
         return employeeService.findAllEmployee();
     }
 }
+
+
 
 

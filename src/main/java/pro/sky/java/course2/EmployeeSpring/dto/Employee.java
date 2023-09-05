@@ -36,7 +36,9 @@ public class Employee {
     public String toString() {
         return
                 "ФИО " + getLastname()
-                        + " " + getName();
+                        + " " + getName()
+                        + " " + getSalary()
+                        + " " + getDepartment();
     }
 
     @Override

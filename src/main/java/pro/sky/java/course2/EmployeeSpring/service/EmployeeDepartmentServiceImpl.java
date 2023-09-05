@@ -27,12 +27,6 @@ public class EmployeeDepartmentServiceImpl implements EmployeeDepartmentService 
                 .orElseThrow(() -> new EmployeeNotFoundException("нет сотрудников в отделе " + department));
     }
 
-
-
-
-
-
-
     @Override
     public Employee findMinSalaryEmployee(int department) {
         return employeeService.findAllEmployee().stream()
