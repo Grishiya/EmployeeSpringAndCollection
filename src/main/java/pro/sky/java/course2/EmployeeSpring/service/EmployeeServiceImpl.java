@@ -58,7 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Collection<Employee> findAllEmployee() {
-        return employeeMap.values();
+        return Collections.unmodifiableCollection(employeeMap.values());
     }
 
     private String generateKey(String name, String lastName) {
