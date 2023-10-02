@@ -15,4 +15,6 @@ public interface EmployeeDepartmentService {
     Collection<Employee> findAllDepartmentEmployee(int department);
 
     Map<Integer, List<Employee>> getAllGroupingByDepartment();
+
+   double salaryCostsInTheDepartment(int department);
 }

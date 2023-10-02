@@ -23,7 +23,7 @@ public class DepartmentController {
 
 
     @GetMapping("/max-salary")
-    public Employee findMaxSalary(   int department) {
+    public Employee findMaxSalary(int department) {
         return employeeDepartmentService.findMaxSalaryEmployee(department);
     }
 
@@ -41,4 +41,10 @@ public class DepartmentController {
     public Map<Integer, List<Employee>> getAllGroupingByDepartment() {
         return employeeDepartmentService.getAllGroupingByDepartment();
     }
+
+    @GetMapping("/sum")
+    public double salaryCostsInTheDepartment(@RequestParam("department") int department) {
+        return employeeDepartmentService.salaryCostsInTheDepartment(department);
+    }
 }
+

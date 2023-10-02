@@ -30,7 +30,7 @@ public class EmployeeDepartmentServiceImpl implements EmployeeDepartmentService 
     @Override
     public Employee findMinSalaryEmployee(int department) {
         return employeeService.findAllEmployee().stream()
-                .filter(employee -> employee.getDepartment()==department)
+                .filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparingDouble(employee -> employee.getSalary()))
                 .orElseThrow(() -> new EmployeeNotFoundException("нет сотрудников в отделе" + department));
     }
@@ -46,5 +46,14 @@ public class EmployeeDepartmentServiceImpl implements EmployeeDepartmentService 
     public Map<Integer, List<Employee>> getAllGroupingByDepartment() {
         return employeeService.findAllEmployee().stream()
                 .collect(Collectors.groupingBy(employee -> employee.getDepartment()));
+    }
+
+    @Override
+    public double salaryCostsInTheDepartment(int department) {
+        return employeeService.findAllEmployee().stream()
+                .filter(employee -> employee.getDepartment() == department)
+                .mapToDouble(employee -> employee.getSalary())
+                .sum();
+
     }
 }
