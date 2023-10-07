@@ -3,8 +3,8 @@ package pro.sky.java.course2.EmployeeSpring.dto;
 import java.util.Objects;
 
 public class Employee {
-    private final String lastName;
     private final String name;
+    private final String lastName;
     private final double salary;
     private final int department;
 

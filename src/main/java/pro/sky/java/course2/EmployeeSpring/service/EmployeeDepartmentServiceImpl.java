@@ -32,7 +32,7 @@ public class EmployeeDepartmentServiceImpl implements EmployeeDepartmentService 
         return employeeService.findAllEmployee().stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparingDouble(employee -> employee.getSalary()))
-                .orElseThrow(() -> new EmployeeNotFoundException("нет сотрудников в отделе" + department));
+                .orElseThrow(() -> new EmployeeNotFoundException("нет сотрудников в отделе " + department));
     }
 
     @Override
