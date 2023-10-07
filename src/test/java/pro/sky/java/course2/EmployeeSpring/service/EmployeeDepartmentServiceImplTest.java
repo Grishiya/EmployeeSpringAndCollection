@@ -88,12 +88,13 @@ class EmployeeDepartmentServiceImplTest {
         assertEquals(Map.of(
                 1, List.of(vlada, grigory), 3, List.of(maria)), result);
     }
+
     @Test
     void salaryCostsInTheDepartment() {
         when(employeeService.findAllEmployee()).thenReturn(employees);
 
-       double result = underTest.salaryCostsInTheDepartment(1);
-       assertEquals(4130303.0, result);
+        double result = underTest.salaryCostsInTheDepartment(1);
+        assertEquals(4130303.0, result);
     }
 }
 
